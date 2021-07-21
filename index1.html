@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .record_submitted_modal_header, .record_submitted_modal_footer{
+      background-color:#582c7f;
+      color: #fff;
+    }
+  </style>
+  <script>
+    function myFunction() {
+      location.replace("index2.html")
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentimental Analysis</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#submit1").modal('show');
+	});
+</script>
+    <!-- CSS only -->
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="navbar shadow-sm p-3 mb-5 rounded" role="navigation">
+        <p class="my-3 h3 col-lg-7 text-center navbar_title"> CRISES ANALYSIS VISUALISATION
+        </p>
+        <button class="btn btn-light pull-right your_tweet_button ml-3" onclick="location.href='form.html'">NEED HELP ? </button>
+        <button type="button" class="btn btn-light pull-right your_tweet_button" data-toggle="modal" data-target="#yourTweet">
+            <i class="fa fa-twitter"></i>
+            Your Tweet</button>  
+        
+    </nav>
+ 
+  <div class="analysis_body">
+    <div class="row d-flex justify-content-center" style="height: 590px;">
+        <div class="col-lg-6 h-100">
+              <div class="card h-100">
+                <div class="card-body">
+                  <!-- <h5 class="text-center font-weight-bold">
+                    
+                  </h5> -->
+                  <div id="myDiv" class="mx-auto col-lg-11"><!-- Plotly chart will be drawn inside this DIV --></div>  
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-5 h-100">
+          <!-- <div class="d-flex justify-content-end mb-4"> -->
+            <!-- <div>
+              <input type="text" id="date_picker" name="daterange" value="04/01/2020 - 04/09/2020" minDate="04/01/2020" maxDate="04/09/2020"/>
+              <span for="date_picker" class="text-light"> (MM-DD-YYYY)</span>
+            </div>  -->
+            
+          <!-- </div> -->
+          <div class="card">
+                <div class="card-body">
+                    <h4 class="text-center font-weight-bold">
+                      Real-time Twitter Sentiment Analysis
+                    </h4>
+                    <p class="text-justify h6"> Sentiment analysis helps in understanding people’s feelings towards any crises. Tweets are identified, transformed and categorized into positive, negative or neutral sentiments.</p>
+                    <div id="myDiv_pie" class="mx-auto col-lg-12"><!-- Plotly chart will be drawn inside this DIV --></div>   
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-11 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <div id="myDiv_bar_category" class="mx-auto col-lg-11"><!-- Plotly chart will be drawn inside this DIV --></div>   
+          </div>
+      </div>
+        </div>
+      </div>
+    </div>
+</div>
+ <!-- The Modal -->
+<div class="modal" id="yourTweet">
+<div class="modal-dialog">
+  <div class="modal-content">
+  
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title">What's your opinion on COVID-19 ?</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    
+    <!-- Modal body -->
+    <div class="modal-body mx-auto">
+        <textarea name="DETAILS" id="tweet" cols="40" rows="3" form="feed"></textarea>
+    </div>
+    
+    <!-- Modal footer -->
+    <div class="modal-footer">  
+      <form action="http://localhost/feedbackcovid.php" method="post" id="feed">
+      <!--<button type="button" class="btn btn-danger" data-dismiss="modal" >Tweet</button>--> 
+        <input type ="submit" value="Tweet" onclick="javascript:clear()"/>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<!-- <div class="row d-flex justify-content-center align-items-center">
+<div class="col-lg-6">
+  <img class="cloud_img" src="./wordCloud (1).png" alt="">
+</div>
+<div class="text_content col-lg-5">
+  <div class="card">
+    <div class="card-body">
+      <p>
+        <h1>WORDCLOUD:</h1>
+
+        A word cloud is a novelty visual representation of text data, typically used to depict keyword metadata (tags) on websites, or to visualize free form text. Tags are usually single words, and the importance of each tag is shown with font size or color.
+      </p>
+      <p></p>
+        The purpose of the wordcloud here is that it updated on trending user opinions.User opinions mentioned are the zephy tweets. So, updations are done in the server side.
+      </p>
+    </div>
+  </div>
+</div>
+</div> -->
+
+<br>
+<div class="row mx-3 pull-right ">
+<div class="col-lg-12 contact">
+    <h6 id="email">EMAIL: zephyrs3416@gmail.com</h6> 
+    <h6 id="zephyrsaddress">
+    ZEPHYRS,
+    </h6>
+    <h6 id="phone">PHONE: +91 8825723971</h6>
+    <h6>Copyright © zephyrs</h6>
+</div>
+</div>
+    
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+    
+</body>
+</html>
